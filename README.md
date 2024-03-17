@@ -1,36 +1,22 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Database seeding
 
-First, run the development server:
+There has been created a seeding file in the ``_lib/prisma`` folder named ``seed.db`` and has been configured in the package.json file. However, in order to be compliant with the task specifications, a ``seed.sh`` file including the installation of the dependencies, creation of the database and migration has been included in the root path of this project. It can be executed as follows:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+sh seed.sh
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API endpoints
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `/api/posts`
+    - **GET** returns the information of all the posts from the database
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+- `/api/posts/[id]`
+    - **GET** returns the information of the post with id [id]
+    - **DELETE** removes the post with id [id] (not soft delete)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `/api/user/[id]/posts`
+    - **GET** returns all the posts of the user with id [id]
